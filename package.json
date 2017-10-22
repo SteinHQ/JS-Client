@@ -1,0 +1,20 @@
+{
+  "name": "restsheet-frontend-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "restful.js": "^0.9.6",
+    "whatwg-fetch": "^2.0.3"
+  }
+}
