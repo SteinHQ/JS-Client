@@ -4,6 +4,7 @@ import {readSheet} from './read';
 import {searchSheet} from './search';
 import {appendRow} from "./append";
 import {editRows} from "./edit";
+import {deleteRows} from "./delete";
 
 const api = restful('http://localhost/storage', fetchBackend(fetch));
 
@@ -26,6 +27,10 @@ class Store {
 
     edit(sheetName, searchObj, setObj, limit){
         return editRows(api, this.id, sheetName, searchObj, setObj, limit);
+    }
+
+    delete(sheetName, searchObj, limit){
+        return deleteRows(api, this.id, sheetName, searchObj, limit);
     }
 }
 

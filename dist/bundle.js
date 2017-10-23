@@ -5427,6 +5427,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__append__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__edit__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__delete__ = __webpack_require__(27);
+
 
 
 
@@ -5455,6 +5457,10 @@ class Store {
 
     edit(sheetName, searchObj, setObj, limit){
         return Object(__WEBPACK_IMPORTED_MODULE_5__edit__["a" /* editRows */])(api, this.id, sheetName, searchObj, setObj, limit);
+    }
+
+    delete(sheetName, searchObj, limit){
+        return Object(__WEBPACK_IMPORTED_MODULE_6__delete__["a" /* deleteRows */])(api, this.id, sheetName, searchObj, limit);
     }
 }
 
@@ -7665,11 +7671,11 @@ const appendRow = function (api, storageId, sheetName, rows) {
 
 
 const editRows = function (api, storageId, sheetName, searchObj, setObj, limit) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"], [searchObj, "object"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"], [setObj, "object"]);
 
     const sheetStore = api.custom(storageId);
 
-    limit = !isNaN(limit) && limit ? limit : undefined; // convert limit to get param
+    limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
 
     const url = sheetName + "/update",
         specificSheet = sheetStore.all(url);
@@ -7693,6 +7699,46 @@ const editRows = function (api, storageId, sheetName, searchObj, setObj, limit) 
     return promise;
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = editRows;
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parseApiResponse__ = __webpack_require__(3);
+
+
+
+const deleteRows = function (api, storageId, sheetName, searchObj, limit) {
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"]);
+
+    const sheetStore = api.custom(storageId);
+
+    limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
+
+    const url = sheetName + "/delete",
+        specificSheet = sheetStore.custom(url);
+
+    // data to post
+    const data = {
+        "condition": searchObj,
+        "limit": limit
+    };
+
+    // promise to return
+    const promise = new Promise((resolve, reject) => {
+        specificSheet.delete(data).then((apiResponse) => {
+            resolve(Object(__WEBPACK_IMPORTED_MODULE_1__parseApiResponse__["a" /* parseObjectResponse */])(apiResponse));
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+
+    return promise;
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = deleteRows;
 
 
 /***/ })
