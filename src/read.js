@@ -1,4 +1,4 @@
-import {parseRows} from './parseRows';
+import {parseRows} from './parseApiResponse';
 
 export const readSheet = function (api, storageId, sheetName, limit, offset) {
     isRequired([sheetName, "string"])

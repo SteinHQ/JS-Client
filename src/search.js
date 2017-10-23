@@ -1,8 +1,15 @@
-import {parseRows} from './parseRows';
+import {parseRows} from './parseApiResponse';
 import {isRequired} from "./argIsRequired";
 
 export const searchSheet = function (api, storageId, sheetName, searchObj, limit, offset) {
     isRequired([sheetName, "string"], [searchObj, "object"]);
+
+    // convert all values to string
+    const searchKeys = Object.keys(searchObj);
+    for (let i = 0; i < searchKeys.length; i++) {
+        const currentKey = searchKeys[i];
+        searchObj[currentKey] = searchObj[currentKey].toString();
+    }
 
     const sheetStore = api.custom(storageId),
         searchString = JSON.stringify(searchObj),
@@ -21,13 +28,11 @@ export const searchSheet = function (api, storageId, sheetName, searchObj, limit
     const url = sheetName + "/search" + params,
         specificSheet = sheetStore.all(url);
 
-    let allRows = [];
-
     // The promise to be returned
     let promise = new Promise((resolve, reject) => {
         // Add all rows to the array
         specificSheet.getAll().then((apiResponse) => {
-            allRows = parseRows(apiResponse);
+            const allRows = parseRows(apiResponse);
             resolve(allRows);
         }).catch((response) => {
             reject(response);

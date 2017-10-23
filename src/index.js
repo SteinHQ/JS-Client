@@ -1,7 +1,8 @@
 import 'whatwg-fetch';
+import restful, {fetchBackend} from 'restful.js';
 import {readSheet} from './read';
 import {searchSheet} from './search';
-import restful, {fetchBackend} from 'restful.js';
+import {appendRow} from "./append";
 
 const api = restful('http://localhost/storage', fetchBackend(fetch));
 
@@ -16,6 +17,10 @@ class Store {
 
     search(sheetName, searchObj,  limit, offset) {
         return searchSheet(api, this.id, sheetName, searchObj, limit, offset);
+    }
+
+    append(sheetName, rows){
+        return appendRow(api, this.id, sheetName, rows);
     }
 }
 

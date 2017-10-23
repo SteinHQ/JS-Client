@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -5107,7 +5107,8 @@ exports['default'] = function (value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 3 */
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5172,10 +5173,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // Load modules
@@ -5371,23 +5372,25 @@ exports.isBuffer = function (obj) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__read__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_restful_js__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_restful_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_restful_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_restful_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_restful_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_restful_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__read__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__append__ = __webpack_require__(25);
 
 
 
 
 
-const api = __WEBPACK_IMPORTED_MODULE_3_restful_js___default()('http://localhost/storage', Object(__WEBPACK_IMPORTED_MODULE_3_restful_js__["fetchBackend"])(fetch));
+
+const api = __WEBPACK_IMPORTED_MODULE_1_restful_js___default()('http://localhost/storage', Object(__WEBPACK_IMPORTED_MODULE_1_restful_js__["fetchBackend"])(fetch));
 
 class Store {
     constructor(storageId) {
@@ -5395,18 +5398,22 @@ class Store {
     }
 
     read(sheetName, limit, offset) {
-        return Object(__WEBPACK_IMPORTED_MODULE_1__read__["a" /* readSheet */])(api, this.id, sheetName, limit, offset);
+        return Object(__WEBPACK_IMPORTED_MODULE_2__read__["a" /* readSheet */])(api, this.id, sheetName, limit, offset);
     }
 
     search(sheetName, searchObj,  limit, offset) {
-        return Object(__WEBPACK_IMPORTED_MODULE_2__search__["a" /* searchSheet */])(api, this.id, sheetName, searchObj, limit, offset);
+        return Object(__WEBPACK_IMPORTED_MODULE_3__search__["a" /* searchSheet */])(api, this.id, sheetName, searchObj, limit, offset);
+    }
+
+    append(sheetName, rows){
+        return Object(__WEBPACK_IMPORTED_MODULE_4__append__["a" /* appendRow */])(api, this.id, sheetName, rows);
     }
 }
 
 window.Store = Store;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 (function(self) {
@@ -5873,11 +5880,11 @@ window.Store = Store;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parseRows__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parseApiResponse__ = __webpack_require__(26);
 
 
 const readSheet = function (api, storageId, sheetName, limit, offset) {
@@ -5908,7 +5915,7 @@ const readSheet = function (api, storageId, sheetName, limit, offset) {
     let promise = new Promise((resolve, reject) => {
         // Add all rows to the array
         specificSheet.getAll().then((apiResponse) => {
-            allRows = Object(__WEBPACK_IMPORTED_MODULE_0__parseRows__["a" /* parseRows */])(apiResponse);
+            allRows = Object(__WEBPACK_IMPORTED_MODULE_0__parseApiResponse__["b" /* parseRows */])(apiResponse);
             resolve(allRows);
         }).catch((response) => {
             reject(response);
@@ -5921,36 +5928,24 @@ const readSheet = function (api, storageId, sheetName, limit, offset) {
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const parseRows = function (apiResponse) {
-    let allRows = [];
-
-    const body = apiResponse.body();
-    for (let rowIndex = 0; rowIndex < body.length; rowIndex++) {
-        const currentRow = body[rowIndex].data();
-        allRows.push(currentRow);
-    }
-
-    return allRows;
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = parseRows;
-
-
-/***/ }),
 /* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parseRows__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__argIsRequired__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parseApiResponse__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__argIsRequired__ = __webpack_require__(10);
 
 
 
 const searchSheet = function (api, storageId, sheetName, searchObj, limit, offset) {
     Object(__WEBPACK_IMPORTED_MODULE_1__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"]);
+
+    // convert all values to string
+    const searchKeys = Object.keys(searchObj);
+    for (let i = 0; i < searchKeys.length; i++) {
+        const currentKey = searchKeys[i];
+        searchObj[currentKey] = searchObj[currentKey].toString();
+    }
 
     const sheetStore = api.custom(storageId),
         searchString = JSON.stringify(searchObj),
@@ -5969,13 +5964,11 @@ const searchSheet = function (api, storageId, sheetName, searchObj, limit, offse
     const url = sheetName + "/search" + params,
         specificSheet = sheetStore.all(url);
 
-    let allRows = [];
-
     // The promise to be returned
     let promise = new Promise((resolve, reject) => {
         // Add all rows to the array
         specificSheet.getAll().then((apiResponse) => {
-            allRows = Object(__WEBPACK_IMPORTED_MODULE_0__parseRows__["a" /* parseRows */])(apiResponse);
+            const allRows = Object(__WEBPACK_IMPORTED_MODULE_0__parseApiResponse__["b" /* parseRows */])(apiResponse);
             resolve(allRows);
         }).catch((response) => {
             reject(response);
@@ -5989,6 +5982,24 @@ const searchSheet = function (api, storageId, sheetName, searchObj, limit, offse
 
 /***/ }),
 /* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const isRequired = function () {
+    for (let argCount = 0; argCount < arguments.length; argCount++) {
+        const currentArg = arguments[argCount][0],
+            currentType = arguments[argCount][1];
+
+        if (typeof currentArg !== currentType) {
+            throw new Error("Not all required params were supplied");
+        }
+    }
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = isRequired;
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6000,25 +6011,25 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _modelEndpoint = __webpack_require__(11);
+var _modelEndpoint = __webpack_require__(12);
 
 var _modelEndpoint2 = _interopRequireDefault(_modelEndpoint);
 
-var _httpFetch = __webpack_require__(15);
+var _httpFetch = __webpack_require__(16);
 
 var _httpFetch2 = _interopRequireDefault(_httpFetch);
 
-var _serviceHttp = __webpack_require__(19);
+var _serviceHttp = __webpack_require__(20);
 
 var _serviceHttp2 = _interopRequireDefault(_serviceHttp);
 
-var _modelDecorator = __webpack_require__(20);
+var _modelDecorator = __webpack_require__(21);
 
-var _httpRequest = __webpack_require__(21);
+var _httpRequest = __webpack_require__(22);
 
 var _httpRequest2 = _interopRequireDefault(_httpRequest);
 
-var _modelScope = __webpack_require__(22);
+var _modelScope = __webpack_require__(23);
 
 var _modelScope2 = _interopRequireDefault(_modelScope);
 
@@ -6052,7 +6063,7 @@ exports.requestBackend = _httpRequest2['default'];
 exports['default'] = restful;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6068,7 +6079,7 @@ var _objectAssign = __webpack_require__(1);
 
 var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-var _response = __webpack_require__(12);
+var _response = __webpack_require__(13);
 
 var _response2 = _interopRequireDefault(_response);
 
@@ -6207,7 +6218,7 @@ exports['default'] = function (request) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6219,7 +6230,7 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _entity = __webpack_require__(13);
+var _entity = __webpack_require__(14);
 
 var _entity2 = _interopRequireDefault(_entity);
 
@@ -6229,7 +6240,7 @@ var _utilSerialize = __webpack_require__(2);
 
 var _utilSerialize2 = _interopRequireDefault(_utilSerialize);
 
-var _warning = __webpack_require__(3);
+var _warning = __webpack_require__(4);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -6273,7 +6284,7 @@ exports['default'] = function (response, decoratedEndpoint) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6309,7 +6320,7 @@ exports["default"] = function (_data, endpoint) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -6499,7 +6510,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6511,11 +6522,11 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _qs = __webpack_require__(16);
+var _qs = __webpack_require__(17);
 
 var _qs2 = _interopRequireDefault(_qs);
 
-var _warning = __webpack_require__(3);
+var _warning = __webpack_require__(4);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -6609,13 +6620,13 @@ exports['default'] = function (fetch) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Stringify = __webpack_require__(17);
-var Parse = __webpack_require__(18);
+var Stringify = __webpack_require__(18);
+var Parse = __webpack_require__(19);
 
 
 // Declare internals
@@ -6630,12 +6641,12 @@ module.exports = {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Utils = __webpack_require__(4);
+var Utils = __webpack_require__(5);
 
 
 // Declare internals
@@ -6790,12 +6801,12 @@ module.exports = function (obj, options) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Utils = __webpack_require__(4);
+var Utils = __webpack_require__(5);
 
 
 // Declare internals
@@ -6983,7 +6994,7 @@ module.exports = function (str, options) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7062,7 +7073,7 @@ exports['default'] = function (httpBackend) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7131,7 +7142,7 @@ function member(endpoint) {
 }
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7189,7 +7200,7 @@ exports['default'] = function (request) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7200,7 +7211,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 exports['default'] = scopeFactory;
 
-var _events = __webpack_require__(23);
+var _events = __webpack_require__(24);
 
 var _immutable = __webpack_require__(0);
 
@@ -7277,7 +7288,7 @@ function scopeFactory(parentScope) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -7585,21 +7596,59 @@ function isUndefined(arg) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-const isRequired = function () {
-    for (let argCount = 0; argCount < arguments.length; argCount++) {
-        const currentArg = arguments[argCount][0],
-            currentType = arguments[argCount][1];
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parseApiResponse__ = __webpack_require__(26);
 
-        if (typeof currentArg !== currentType) {
-            throw new Error("Not all required params were supplied");
-        }
-    }
+
+
+const appendRow = function (api, storageId, sheetName, rows) {
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([rows, "object"]);
+
+    const sheetStore = api.custom(storageId),
+        rowsData = JSON.parse(JSON.stringify(rows)),
+        url = sheetName + "/append",
+        specificSheet = sheetStore.all(url);
+
+    let promise = new Promise((resolve, reject) => {
+        specificSheet.post(rowsData).then((apiResponse) => {
+            resolve(Object(__WEBPACK_IMPORTED_MODULE_1__parseApiResponse__["a" /* parseObjectResponse */])(apiResponse));
+        }).catch((err) => {
+            reject(err);
+        })
+    });
+
+    return promise;
 };
-/* harmony export (immutable) */ __webpack_exports__["a"] = isRequired;
+/* harmony export (immutable) */ __webpack_exports__["a"] = appendRow;
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const parseRows = function (apiResponse) {
+    let allRows = [];
+
+    const body = apiResponse.body();
+    for (let rowIndex = 0; rowIndex < body.length; rowIndex++) {
+        const currentRow = body[rowIndex].data();
+        allRows.push(currentRow);
+    }
+
+    return allRows;
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = parseRows;
+
+
+const parseObjectResponse = function (response) {
+    return response.body().data();
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = parseObjectResponse;
 
 
 /***/ })

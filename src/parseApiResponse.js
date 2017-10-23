@@ -9,3 +9,7 @@ export const parseRows = function (apiResponse) {
 
     return allRows;
 };
+
+export const parseObjectResponse = function (response) {
+    return response.body().data();
+};
