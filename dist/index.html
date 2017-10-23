@@ -6,11 +6,19 @@
 <script src="bundle.js"></script>
 <script>
     var store = new Store('59e842fc288df70e8464626d');
-    store.append("Sheet2", [{"foo": "badadawdr", "another column": undefined}]).then(function (allRows) {
+    // Append
+    /*store.append("Sheet2", [{"foo": "badadawdr", "another column": 1}]).then(function (allRows) {
         console.log(allRows);
     }).catch(function (res) {
         console.log(res);
-    });
+    });*/
+
+    //Edit
+    /*store.edit("Sheet2", {"foo": 'bar'}, {"foo": "edited", "another column": 21}).then(function (res) {
+        console.log(res);
+    }).catch(function (err) {
+        console.log(err);
+    });*/
 </script>
 </body>
 </html>

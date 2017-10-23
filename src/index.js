@@ -3,6 +3,7 @@ import restful, {fetchBackend} from 'restful.js';
 import {readSheet} from './read';
 import {searchSheet} from './search';
 import {appendRow} from "./append";
+import {editRows} from "./edit";
 
 const api = restful('http://localhost/storage', fetchBackend(fetch));
 
@@ -21,6 +22,10 @@ class Store {
 
     append(sheetName, rows){
         return appendRow(api, this.id, sheetName, rows);
+    }
+
+    edit(sheetName, searchObj, setObj, limit){
+        return editRows(api, this.id, sheetName, searchObj, setObj, limit);
     }
 }
 

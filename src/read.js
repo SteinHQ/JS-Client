@@ -3,9 +3,7 @@ import {parseRows} from './parseApiResponse';
 export const readSheet = function (api, storageId, sheetName, limit, offset) {
     isRequired([sheetName, "string"])
 
-    const sheetStore = api.custom(storageId),
-        limitString = limit ? "limit=" + limit : "",
-        offsetString = offset ? "offset=" + offset : "";
+    const sheetStore = api.custom(storageId);
 
     let params = "";
 

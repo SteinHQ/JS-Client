@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -5107,7 +5107,31 @@ exports['default'] = function (value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 3 */,
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const parseRows = function (apiResponse) {
+    let allRows = [];
+
+    const body = apiResponse.body();
+    for (let rowIndex = 0; rowIndex < body.length; rowIndex++) {
+        const currentRow = body[rowIndex].data();
+        allRows.push(currentRow);
+    }
+
+    return allRows;
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = parseRows;
+
+
+const parseObjectResponse = function (response) {
+    return response.body().data();
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = parseObjectResponse;
+
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5173,7 +5197,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 5 */
@@ -5376,14 +5400,34 @@ exports.isBuffer = function (obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+const isRequired = function () {
+    for (let argCount = 0; argCount < arguments.length; argCount++) {
+        const currentArg = arguments[argCount][0],
+            currentType = arguments[argCount][1];
+
+        if (typeof currentArg !== currentType) {
+            throw new Error("Not all required params were supplied");
+        }
+    }
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = isRequired;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_restful_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_restful_js__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_restful_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_restful_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__read__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__read__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__append__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__edit__ = __webpack_require__(26);
+
 
 
 
@@ -5408,12 +5452,16 @@ class Store {
     append(sheetName, rows){
         return Object(__WEBPACK_IMPORTED_MODULE_4__append__["a" /* appendRow */])(api, this.id, sheetName, rows);
     }
+
+    edit(sheetName, searchObj, setObj, limit){
+        return Object(__WEBPACK_IMPORTED_MODULE_5__edit__["a" /* editRows */])(api, this.id, sheetName, searchObj, setObj, limit);
+    }
 }
 
 window.Store = Store;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 (function(self) {
@@ -5880,126 +5928,7 @@ window.Store = Store;
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parseApiResponse__ = __webpack_require__(26);
-
-
-const readSheet = function (api, storageId, sheetName, limit, offset) {
-    isRequired([sheetName, "string"])
-
-    const sheetStore = api.custom(storageId),
-        limitString = limit ? "limit=" + limit : "",
-        offsetString = offset ? "offset=" + offset : "";
-
-    let params = "";
-
-    // add limit & offset params as per cases
-    if (limit) {
-        params += "?limit=" + limit;
-        if (offset) {
-            params += "&offset=" + offset;
-        }
-    } else if (offset) {
-        params += "?offset=" + offset;
-    }
-
-    const url = sheetName + params,
-        specificSheet = sheetStore.all(url);
-
-    let allRows = [];
-
-    // The promise to be returned
-    let promise = new Promise((resolve, reject) => {
-        // Add all rows to the array
-        specificSheet.getAll().then((apiResponse) => {
-            allRows = Object(__WEBPACK_IMPORTED_MODULE_0__parseApiResponse__["b" /* parseRows */])(apiResponse);
-            resolve(allRows);
-        }).catch((response) => {
-            reject(response);
-        });
-    });
-
-    return promise;
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = readSheet;
-
-
-/***/ }),
 /* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parseApiResponse__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__argIsRequired__ = __webpack_require__(10);
-
-
-
-const searchSheet = function (api, storageId, sheetName, searchObj, limit, offset) {
-    Object(__WEBPACK_IMPORTED_MODULE_1__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"]);
-
-    // convert all values to string
-    const searchKeys = Object.keys(searchObj);
-    for (let i = 0; i < searchKeys.length; i++) {
-        const currentKey = searchKeys[i];
-        searchObj[currentKey] = searchObj[currentKey].toString();
-    }
-
-    const sheetStore = api.custom(storageId),
-        searchString = JSON.stringify(searchObj),
-        limitString = limit ? "limit=" + limit : "",
-        offsetString = offset ? "offset=" + offset : "";
-
-    let params = "?search=" + searchString;
-    // add limit & offset params as per cases
-    if (limit) {
-        params += "&limit=" + limit;
-    }
-    if (offset) {
-        params += "?offset=" + offset;
-    }
-
-    const url = sheetName + "/search" + params,
-        specificSheet = sheetStore.all(url);
-
-    // The promise to be returned
-    let promise = new Promise((resolve, reject) => {
-        // Add all rows to the array
-        specificSheet.getAll().then((apiResponse) => {
-            const allRows = Object(__WEBPACK_IMPORTED_MODULE_0__parseApiResponse__["b" /* parseRows */])(apiResponse);
-            resolve(allRows);
-        }).catch((response) => {
-            reject(response);
-        });
-    });
-
-    return promise;
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = searchSheet;
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const isRequired = function () {
-    for (let argCount = 0; argCount < arguments.length; argCount++) {
-        const currentArg = arguments[argCount][0],
-            currentType = arguments[argCount][1];
-
-        if (typeof currentArg !== currentType) {
-            throw new Error("Not all required params were supplied");
-        }
-    }
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = isRequired;
-
-
-/***/ }),
-/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6011,25 +5940,25 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _modelEndpoint = __webpack_require__(12);
+var _modelEndpoint = __webpack_require__(10);
 
 var _modelEndpoint2 = _interopRequireDefault(_modelEndpoint);
 
-var _httpFetch = __webpack_require__(16);
+var _httpFetch = __webpack_require__(14);
 
 var _httpFetch2 = _interopRequireDefault(_httpFetch);
 
-var _serviceHttp = __webpack_require__(20);
+var _serviceHttp = __webpack_require__(18);
 
 var _serviceHttp2 = _interopRequireDefault(_serviceHttp);
 
-var _modelDecorator = __webpack_require__(21);
+var _modelDecorator = __webpack_require__(19);
 
-var _httpRequest = __webpack_require__(22);
+var _httpRequest = __webpack_require__(20);
 
 var _httpRequest2 = _interopRequireDefault(_httpRequest);
 
-var _modelScope = __webpack_require__(23);
+var _modelScope = __webpack_require__(21);
 
 var _modelScope2 = _interopRequireDefault(_modelScope);
 
@@ -6063,7 +5992,7 @@ exports.requestBackend = _httpRequest2['default'];
 exports['default'] = restful;
 
 /***/ }),
-/* 12 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6079,7 +6008,7 @@ var _objectAssign = __webpack_require__(1);
 
 var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
-var _response = __webpack_require__(13);
+var _response = __webpack_require__(11);
 
 var _response2 = _interopRequireDefault(_response);
 
@@ -6218,7 +6147,7 @@ exports['default'] = function (request) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 13 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6230,7 +6159,7 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _entity = __webpack_require__(14);
+var _entity = __webpack_require__(12);
 
 var _entity2 = _interopRequireDefault(_entity);
 
@@ -6284,7 +6213,7 @@ exports['default'] = function (response, decoratedEndpoint) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 14 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6320,7 +6249,7 @@ exports["default"] = function (_data, endpoint) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 15 */
+/* 13 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -6510,7 +6439,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 16 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6522,7 +6451,7 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _qs = __webpack_require__(17);
+var _qs = __webpack_require__(15);
 
 var _qs2 = _interopRequireDefault(_qs);
 
@@ -6620,13 +6549,13 @@ exports['default'] = function (fetch) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
 
-var Stringify = __webpack_require__(18);
-var Parse = __webpack_require__(19);
+var Stringify = __webpack_require__(16);
+var Parse = __webpack_require__(17);
 
 
 // Declare internals
@@ -6641,7 +6570,7 @@ module.exports = {
 
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
@@ -6801,7 +6730,7 @@ module.exports = function (obj, options) {
 
 
 /***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load modules
@@ -6994,7 +6923,7 @@ module.exports = function (str, options) {
 
 
 /***/ }),
-/* 20 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7073,7 +7002,7 @@ exports['default'] = function (httpBackend) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 21 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7142,7 +7071,7 @@ function member(endpoint) {
 }
 
 /***/ }),
-/* 22 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7200,7 +7129,7 @@ exports['default'] = function (request) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 23 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7211,7 +7140,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 exports['default'] = scopeFactory;
 
-var _events = __webpack_require__(24);
+var _events = __webpack_require__(22);
 
 var _immutable = __webpack_require__(0);
 
@@ -7288,7 +7217,7 @@ function scopeFactory(parentScope) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 24 */
+/* 22 */
 /***/ (function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -7596,12 +7525,111 @@ function isUndefined(arg) {
 
 
 /***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parseApiResponse__ = __webpack_require__(3);
+
+
+const readSheet = function (api, storageId, sheetName, limit, offset) {
+    isRequired([sheetName, "string"])
+
+    const sheetStore = api.custom(storageId);
+
+    let params = "";
+
+    // add limit & offset params as per cases
+    if (limit) {
+        params += "?limit=" + limit;
+        if (offset) {
+            params += "&offset=" + offset;
+        }
+    } else if (offset) {
+        params += "?offset=" + offset;
+    }
+
+    const url = sheetName + params,
+        specificSheet = sheetStore.all(url);
+
+    let allRows = [];
+
+    // The promise to be returned
+    let promise = new Promise((resolve, reject) => {
+        // Add all rows to the array
+        specificSheet.getAll().then((apiResponse) => {
+            allRows = Object(__WEBPACK_IMPORTED_MODULE_0__parseApiResponse__["b" /* parseRows */])(apiResponse);
+            resolve(allRows);
+        }).catch((response) => {
+            reject(response);
+        });
+    });
+
+    return promise;
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = readSheet;
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parseApiResponse__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__argIsRequired__ = __webpack_require__(6);
+
+
+
+const searchSheet = function (api, storageId, sheetName, searchObj, limit, offset) {
+    Object(__WEBPACK_IMPORTED_MODULE_1__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"]);
+
+    // convert all values to string
+    const searchKeys = Object.keys(searchObj);
+    for (let i = 0; i < searchKeys.length; i++) {
+        const currentKey = searchKeys[i];
+        searchObj[currentKey] = searchObj[currentKey].toString();
+    }
+
+    const sheetStore = api.custom(storageId),
+        searchString = JSON.stringify(searchObj),
+        limitString = limit ? "limit=" + limit : "",
+        offsetString = offset ? "offset=" + offset : "";
+
+    let params = "?search=" + searchString;
+    // add limit & offset params as per cases
+    if (limit) {
+        params += "&limit=" + limit;
+    }
+    if (offset) {
+        params += "?offset=" + offset;
+    }
+
+    const url = sheetName + "/search" + params,
+        specificSheet = sheetStore.all(url);
+
+    // The promise to be returned
+    let promise = new Promise((resolve, reject) => {
+        // Add all rows to the array
+        specificSheet.getAll().then((apiResponse) => {
+            const allRows = Object(__WEBPACK_IMPORTED_MODULE_0__parseApiResponse__["b" /* parseRows */])(apiResponse);
+            resolve(allRows);
+        }).catch((response) => {
+            reject(response);
+        });
+    });
+
+    return promise;
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = searchSheet;
+
+
+/***/ }),
 /* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parseApiResponse__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parseApiResponse__ = __webpack_require__(3);
 
 
 
@@ -7631,24 +7659,40 @@ const appendRow = function (api, storageId, sheetName, rows) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-const parseRows = function (apiResponse) {
-    let allRows = [];
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__parseApiResponse__ = __webpack_require__(3);
 
-    const body = apiResponse.body();
-    for (let rowIndex = 0; rowIndex < body.length; rowIndex++) {
-        const currentRow = body[rowIndex].data();
-        allRows.push(currentRow);
-    }
 
-    return allRows;
+
+const editRows = function (api, storageId, sheetName, searchObj, setObj, limit) {
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"], [searchObj, "object"]);
+
+    const sheetStore = api.custom(storageId);
+
+    limit = !isNaN(limit) && limit ? limit : undefined; // convert limit to get param
+
+    const url = sheetName + "/update",
+        specificSheet = sheetStore.all(url);
+
+    // data to post
+    const data = {
+        "condition": searchObj,
+        "set": setObj,
+        "limit": limit
+    };
+
+    // promise to return
+    const promise = new Promise((resolve, reject) => {
+        specificSheet.post(data).then((apiResponse) => {
+            resolve(Object(__WEBPACK_IMPORTED_MODULE_1__parseApiResponse__["a" /* parseObjectResponse */])(apiResponse));
+        }).catch((err) => {
+            reject(err);
+        })
+    });
+
+    return promise;
 };
-/* harmony export (immutable) */ __webpack_exports__["b"] = parseRows;
-
-
-const parseObjectResponse = function (response) {
-    return response.body().data();
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = parseObjectResponse;
+/* harmony export (immutable) */ __webpack_exports__["a"] = editRows;
 
 
 /***/ })
