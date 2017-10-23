@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-watch": "webpack --config webpack.config.js --watch",
-    "build": "webpack --config webpack.config.js && uglifyjs dist/bundle.js --compress --output dist/bundle.min.js && babel dist/bundle.js --out-file dist/bundle_es5.js && uglifyjs dist/bundle_es5.js --compress --output dist/bundle_es5.min.js"
+    "build": "webpack --config webpack.config.js && uglifyjs dist/bundle.js --compress --mangle --output dist/bundle.min.js && babel dist/bundle.js --out-file dist/bundle_es5.js && uglifyjs dist/bundle_es5.js --compress --mangle --output dist/bundle_es5.min.js"
   },
   "keywords": [],
   "author": "",
