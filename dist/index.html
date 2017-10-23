@@ -6,6 +6,18 @@
 <script src="bundle.js"></script>
 <script>
     var store = new Store('59e842fc288df70e8464626d');
+	// Read
+	store.read("Sheet2").then(function (allRows) {
+        console.log(allRows);
+    }).catch(function (res) {
+        console.log(res);
+    });
+	// search
+	/* store.search("Sheet2", {"foo": "bar"}).then(function (allRows) {
+        console.log(allRows);
+    }).catch(function (res) {
+        console.log(res);
+    }); */
     // Append
     /*store.append("Sheet2", [{"foo": "badadawdr", "another column": 1}]).then(function (allRows) {
         console.log(allRows);

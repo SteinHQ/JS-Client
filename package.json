@@ -5,12 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js --watch"
+    "webpack-watch": "webpack --config webpack.config.js --watch",
+    "build": "webpack --config webpack.config.js && uglifyjs dist/bundle.js --compress --output dist/bundle.min.js && babel dist/bundle.js --out-file dist/bundle_es5.js && uglifyjs dist/bundle_es5.js --compress --output dist/bundle_es5.min.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "uglify-es": "^3.1.5",
+    "uglify-js": "^3.1.5",
     "webpack": "^3.8.1"
   },
   "dependencies": {
