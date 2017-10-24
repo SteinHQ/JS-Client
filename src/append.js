@@ -1,20 +1,24 @@
 import {isRequired} from "./argIsRequired";
-import {parseObjectResponse} from "./parseApiResponse";
+import 'whatwg-fetch';
 
-export const appendRow = function (api, storageId, sheetName, rows) {
+export const appendRow = function (url, storageId, sheetName, rows) {
     isRequired([rows, "object"]);
 
-    const sheetStore = api.custom(storageId),
-        rowsData = JSON.parse(JSON.stringify(rows)),
-        url = sheetName + "/append",
-        specificSheet = sheetStore.all(url);
+    url += `${storageId}/${sheetName}/append`;
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(rows)
+    };
 
     let promise = new Promise((resolve, reject) => {
-        specificSheet.post(rowsData).then((apiResponse) => {
-            resolve(parseObjectResponse(apiResponse));
+        fetch(url, options).then((apiResponse) => {
+            resolve(apiResponse.json());
         }).catch((err) => {
             reject(err);
-        })
+        });
     });
 
     return promise;

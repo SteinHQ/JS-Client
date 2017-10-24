@@ -1,15 +1,12 @@
 import {isRequired} from "./argIsRequired";
-import {parseObjectResponse} from "./parseApiResponse";
+import 'whatwg-fetch';
 
-export const editRows = function (api, storageId, sheetName, searchObj, setObj, limit) {
+export const editRows = function (url, storageId, sheetName, searchObj, setObj, limit) {
     isRequired([sheetName, "string"], [searchObj, "object"], [setObj, "object"]);
-
-    const sheetStore = api.custom(storageId);
 
     limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
 
-    const url = sheetName + "/update",
-        specificSheet = sheetStore.all(url);
+    url += `${storageId}/${sheetName}/update`;
 
     // data to post
     const data = {
@@ -17,11 +14,18 @@ export const editRows = function (api, storageId, sheetName, searchObj, setObj, 
         "set": setObj,
         "limit": limit
     };
-
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }
+;
     // promise to return
     const promise = new Promise((resolve, reject) => {
-        specificSheet.post(data).then((apiResponse) => {
-            resolve(parseObjectResponse(apiResponse));
+        fetch(url, options).then((apiResponse) => {
+            resolve(apiResponse.json());
         }).catch((err) => {
             reject(err);
         })

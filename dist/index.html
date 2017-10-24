@@ -7,17 +7,17 @@
 <script>
     var store = new Store('59e842fc288df70e8464626d');
 	// Read
-	store.read("Sheet2").then(function (allRows) {
+	/*store.read("Sheet2", 3).then(function (allRows) {
         console.log(allRows);
     }).catch(function (res) {
         console.log(res);
-    });
+    });*/
 	// search
-	/* store.search("Sheet2", {"foo": "bar"}).then(function (allRows) {
+    /*store.search("Sheet2", {"foo": "bar"}, 1).then(function (allRows) {
         console.log(allRows);
     }).catch(function (res) {
         console.log(res);
-    }); */
+    });*/
     // Append
     /*store.append("Sheet2", [{"foo": "badadawdr", "another column": 1}]).then(function (allRows) {
         console.log(allRows);
@@ -26,14 +26,14 @@
     });*/
 
     //Edit
-    /*store.edit("Sheet2", {"foo": 'bar'}, {"foo": "edited", "another column": 21}).then(function (res) {
+    /*store.edit("Sheet2", {"foo": 'bar'}, {"foo": "edited", "another column": 12}).then(function (res) {
         console.log(res);
     }).catch(function (err) {
         console.log(err);
     });*/
 
     //Delete
-    /*store.delete("Sheet2", {"foo": 'bar', "another column": "3"}, 3).then(function (res) {
+    /*store.delete("Sheet2", {"foo": 'baz', "another column": "24"}, 2).then(function (res) {
         console.log(res);
     }).catch(function (err) {
         console.log(err);

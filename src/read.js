@@ -1,10 +1,8 @@
-import {parseRows} from './parseApiResponse';
 import {isRequired} from "./argIsRequired";
+import 'whatwg-fetch';
 
-export const readSheet = function (api, storageId, sheetName, limit, offset) {
-    isRequired([sheetName, "string"])
-
-    const sheetStore = api.custom(storageId);
+export const readSheet = function (url, storageId, sheetName, limit, offset) {
+    isRequired([sheetName, "string"]);
 
     let params = "";
 
@@ -18,17 +16,15 @@ export const readSheet = function (api, storageId, sheetName, limit, offset) {
         params += "?offset=" + offset;
     }
 
-    const url = sheetName + params,
-        specificSheet = sheetStore.all(url);
+    url += `${storageId}/${sheetName}${params}`;
 
     let allRows = [];
 
     // The promise to be returned
     let promise = new Promise((resolve, reject) => {
         // Add all rows to the array
-        specificSheet.getAll().then((apiResponse) => {
-            allRows = parseRows(apiResponse);
-            resolve(allRows);
+        fetch(url).then((apiResponse) => {
+            resolve(apiResponse.json());
         }).catch((response) => {
             reject(response);
         });

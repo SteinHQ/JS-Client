@@ -1,7 +1,7 @@
-import {parseRows} from './parseApiResponse';
 import {isRequired} from "./argIsRequired";
+import 'whatwg-fetch';
 
-export const searchSheet = function (api, storageId, sheetName, searchObj, limit, offset) {
+export const searchSheet = function (url, storageId, sheetName, searchObj, limit, offset) {
     isRequired([sheetName, "string"], [searchObj, "object"]);
 
     // convert all values to string
@@ -11,8 +11,7 @@ export const searchSheet = function (api, storageId, sheetName, searchObj, limit
         searchObj[currentKey] = searchObj[currentKey].toString();
     }
 
-    const sheetStore = api.custom(storageId),
-        searchString = JSON.stringify(searchObj),
+    const searchString = JSON.stringify(searchObj),
         limitString = limit ? "limit=" + limit : "",
         offsetString = offset ? "offset=" + offset : "";
 
@@ -22,18 +21,16 @@ export const searchSheet = function (api, storageId, sheetName, searchObj, limit
         params += "&limit=" + limit;
     }
     if (offset) {
-        params += "?offset=" + offset;
+        params += "&offset=" + offset;
     }
 
-    const url = sheetName + "/search" + params,
-        specificSheet = sheetStore.all(url);
+    url += `${storageId}/${sheetName}/search${params}`;
 
     // The promise to be returned
     let promise = new Promise((resolve, reject) => {
         // Add all rows to the array
-        specificSheet.getAll().then((apiResponse) => {
-            const allRows = parseRows(apiResponse);
-            resolve(allRows);
+        fetch(url).then((apiResponse) => {
+            resolve(apiResponse.json());
         }).catch((response) => {
             reject(response);
         });
