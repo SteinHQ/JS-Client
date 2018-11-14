@@ -1,7 +1,7 @@
 import {readSheet} from './read';
-import {appendRow} from "./append";
-import {editRows} from "./edit";
-import {deleteRows} from "./delete";
+import {appendRow} from './append';
+import {editRows} from './edit';
+import {deleteRows} from './delete';
 
 class Store {
   constructor(storageURL) {
@@ -16,12 +16,12 @@ class Store {
     return appendRow(this.url, sheetName, rows);
   }
 
-  edit(sheetName, {searchObj, setObj, limit}) {
-    return editRows(this.url, sheetName, {searchObj, setObj, limit});
+  edit(sheetName, {search, set, limit}) {
+    return editRows(this.url, sheetName, {search, set, limit});
   }
 
-  delete(sheetName, {searchObj, limit}) {
-    return deleteRows(this.url, sheetName, {searchObj, limit});
+  delete(sheetName, {search, limit}) {
+    return deleteRows(this.url, sheetName, {search, limit});
   }
 }
 

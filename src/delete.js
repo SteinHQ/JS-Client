@@ -1,16 +1,16 @@
-import {isRequired} from "./argIsRequired";
+import {isRequired} from './argIsRequired';
 import 'whatwg-fetch';
 
-export const deleteRows = function (url, sheetName, {searchObj, limit}) {
-  isRequired([sheetName, "string"], [searchObj, "object"]);
+export const deleteRows = function (url, sheetName, {search, limit}) {
+  isRequired([sheetName, 'string'], [search, 'object']);
 
   limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
-  url += `${sheetName}/delete`;
+  url += `${sheetName}`;
 
   // data to post
   const data = {
-    'condition': searchObj,
-    'limit': limit
+    condition: search,
+    limit
   };
   const options = {
     method: 'DELETE',
@@ -22,7 +22,7 @@ export const deleteRows = function (url, sheetName, {searchObj, limit}) {
 
   return new Promise((resolve, reject) => {
     fetch(url, options).then((apiResponse) => {
-      resolve(parseObjectResponse(apiResponse));
+      resolve(apiResponse.json());
     }).catch((err) => {
       reject(err);
     });

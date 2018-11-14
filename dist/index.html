@@ -7,7 +7,7 @@
 <script>
   let store = new Store('http://localhost:8080/v1/storages/5be5fa57e10a8b38ac96f582');
   // Read
-  store.read("Sheet1", {
+  /*store.read("Sheet1", {
     search: {
       author: 'Shiven Sinha'
     }
@@ -15,7 +15,7 @@
     console.log(allRows);
   }).catch(function (res) {
     console.log(res);
-  });
+  });*/
   // search
   /*store.search("Sheet2", {"foo": "bar"}, 1).then(function (allRows) {
       console.log(allRows);
@@ -30,18 +30,24 @@
   });*/
 
   //Edit
-  /*store.edit("Sheet2", {"foo": 'bar'}, {"foo": "edited", "another column": 12}).then(function (res) {
-      console.log(res);
+  /*store.edit('Sheet1', {
+    search: {author: 'Shiven Sinha'},
+    set: {author: 'Shiven'}
+  }).then(function (res) {
+    console.log(res);
   }).catch(function (err) {
-      console.log(err);
+    console.log(err);
   });*/
 
   //Delete
-  /*store.delete("Sheet2", {"foo": 'baz', "another column": "24"}, 2).then(function (res) {
+  store.delete('Sheet1', {
+    search: {author: 'Shiven Sinha'},
+    limit: 1
+  }).then(function (res) {
       console.log(res);
   }).catch(function (err) {
       console.log(err);
-  });*/
+  });
 </script>
 </body>
 </html>

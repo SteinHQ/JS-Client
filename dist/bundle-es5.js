@@ -703,20 +703,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__);
 
   var editRows = function editRows(url, sheetName, _ref5) {
-    var searchObj = _ref5.searchObj,
-        setObj = _ref5.setObj,
+    var search = _ref5.search,
+        set = _ref5.set,
         limit = _ref5.limit;
 
-    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [searchObj, 'object'], [setObj, 'object']);
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [search, 'object'], [set, 'object']);
 
-    limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
+    limit = !isNaN(limit) && limit ? limit : null; // validate limit
     url += sheetName + '/update';
 
     // data to post
     var data = {
-      'condition': searchObj,
-      'set': setObj,
-      'limit': limit
+      condition: search,
+      set: set,
+      limit: limit
     };
     var options = {
       method: 'POST',
@@ -748,18 +748,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__);
 
   var deleteRows = function deleteRows(url, sheetName, _ref6) {
-    var searchObj = _ref6.searchObj,
+    var search = _ref6.search,
         limit = _ref6.limit;
 
-    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [search, 'object']);
 
     limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
     url += sheetName + '/delete';
 
     // data to post
     var data = {
-      'condition': searchObj,
-      'limit': limit
+      condition: search,
+      limit: limit
     };
     var options = {
       method: 'DELETE',
@@ -771,7 +771,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return new Promise(function (resolve, reject) {
       fetch(url, options).then(function (apiResponse) {
-        resolve(parseObjectResponse(apiResponse));
+        resolve(apiResponse);
       }).catch(function (err) {
         reject(err);
       });

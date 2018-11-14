@@ -1,20 +1,22 @@
 import {isRequired} from './argIsRequired';
 import 'whatwg-fetch';
 
-export const editRows = function (url, sheetName, {searchObj, setObj, limit}) {
-  isRequired([sheetName, 'string'], [searchObj, 'object'], [setObj, 'object']);
+export const editRows = function (url, sheetName, {search, set, limit}) {
+  console.log(search, set);
 
-  limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
-  url += `${sheetName}/update`;
+  isRequired([sheetName, 'string'], [search, 'object'], [set, 'object']);
+
+  limit = !isNaN(limit) && limit ? limit : null; // validate limit
+  url += `${sheetName}`;
 
   // data to post
   const data = {
-    'condition': searchObj,
-    'set': setObj,
-    'limit': limit
+    condition: search,
+    set,
+    limit
   };
   const options = {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },

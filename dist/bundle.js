@@ -576,12 +576,12 @@ class Store {
     return Object(__WEBPACK_IMPORTED_MODULE_1__append__["a" /* appendRow */])(this.url, sheetName, rows);
   }
 
-  edit(sheetName, {searchObj, setObj, limit}) {
-    return Object(__WEBPACK_IMPORTED_MODULE_2__edit__["a" /* editRows */])(this.url, sheetName, {searchObj, setObj, limit});
+  edit(sheetName, {search, set, limit}) {
+    return Object(__WEBPACK_IMPORTED_MODULE_2__edit__["a" /* editRows */])(this.url, sheetName, {search, set, limit});
   }
 
-  delete(sheetName, {searchObj, limit}) {
-    return Object(__WEBPACK_IMPORTED_MODULE_3__delete__["a" /* deleteRows */])(this.url, sheetName, {searchObj, limit});
+  delete(sheetName, {search, limit}) {
+    return Object(__WEBPACK_IMPORTED_MODULE_3__delete__["a" /* deleteRows */])(this.url, sheetName, {search, limit});
   }
 }
 
@@ -608,8 +608,6 @@ const readSheet = (url, sheetName, {limit, offset, search}) => {
   ];
 
   url += `${sheetName}?${URLGetParameters.join('&')}`;
-
-  console.log(url);
 
   return new Promise((resolve, reject) => {
     // Add all rows to the array
@@ -668,20 +666,22 @@ const appendRow = function (url, storageId, sheetName, rows) {
 
 
 
-const editRows = function (url, sheetName, {searchObj, setObj, limit}) {
-  Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [searchObj, 'object'], [setObj, 'object']);
+const editRows = function (url, sheetName, {search, set, limit}) {
+  console.log(search, set);
 
-  limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
-  url += `${sheetName}/update`;
+  Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [search, 'object'], [set, 'object']);
+
+  limit = !isNaN(limit) && limit ? limit : null; // validate limit
+  url += `${sheetName}`;
 
   // data to post
   const data = {
-    'condition': searchObj,
-    'set': setObj,
-    'limit': limit
+    condition: search,
+    set,
+    limit
   };
   const options = {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -710,16 +710,16 @@ const editRows = function (url, sheetName, {searchObj, setObj, limit}) {
 
 
 
-const deleteRows = function (url, sheetName, {searchObj, limit}) {
-  Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"]);
+const deleteRows = function (url, sheetName, {search, limit}) {
+  Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [search, 'object']);
 
   limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
-  url += `${sheetName}/delete`;
+  url += `${sheetName}`;
 
   // data to post
   const data = {
-    'condition': searchObj,
-    'limit': limit
+    condition: search,
+    limit
   };
   const options = {
     method: 'DELETE',
@@ -731,7 +731,7 @@ const deleteRows = function (url, sheetName, {searchObj, limit}) {
 
   return new Promise((resolve, reject) => {
     fetch(url, options).then((apiResponse) => {
-      resolve(parseObjectResponse(apiResponse));
+      resolve(apiResponse.json());
     }).catch((err) => {
       reject(err);
     });

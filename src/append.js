@@ -1,4 +1,4 @@
-import {isRequired} from "./argIsRequired";
+import {isRequired} from './argIsRequired';
 import 'whatwg-fetch';
 
 export const appendRow = function (url, storageId, sheetName, rows) {
