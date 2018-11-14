@@ -7,10 +7,12 @@ export const readSheet = (url, sheetName, {limit, offset, search}) => {
   let URLGetParameters = [
     limit ? `limit=${limit}` : '',
     offset ? `offset=${offset}` : '',
-    search ? `search=${search}` : ''
+    search ? `search=${JSON.stringify(search)}` : ''
   ];
 
   url += `${sheetName}?${URLGetParameters.join('&')}`;
+
+  console.log(url);
 
   return new Promise((resolve, reject) => {
     // Add all rows to the array

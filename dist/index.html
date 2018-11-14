@@ -5,39 +5,43 @@
 <body>
 <script src="bundle.js"></script>
 <script>
-    let store = new Store('http://localhost:8080/v1/storages/5be5fa57e10a8b38ac96f582');
-	// Read
-	store.read("Sheet1", 3).then(function (allRows) {
-        console.log(allRows);
-    }).catch(function (res) {
-        console.log(res);
-    });
-	// search
-    /*store.search("Sheet2", {"foo": "bar"}, 1).then(function (allRows) {
-        console.log(allRows);
-    }).catch(function (res) {
-        console.log(res);
-    });*/
-    // Append
-    /*store.append("Sheet2", [{"foo": "badadawdr", "another column": 1}]).then(function (allRows) {
-        console.log(allRows);
-    }).catch(function (res) {
-        console.log(res);
-    });*/
+  let store = new Store('http://localhost:8080/v1/storages/5be5fa57e10a8b38ac96f582');
+  // Read
+  store.read("Sheet1", {
+    search: {
+      author: 'Shiven Sinha'
+    }
+  }).then(function (allRows) {
+    console.log(allRows);
+  }).catch(function (res) {
+    console.log(res);
+  });
+  // search
+  /*store.search("Sheet2", {"foo": "bar"}, 1).then(function (allRows) {
+      console.log(allRows);
+  }).catch(function (res) {
+      console.log(res);
+  });*/
+  // Append
+  /*store.append("Sheet2", [{"foo": "badadawdr", "another column": 1}]).then(function (allRows) {
+      console.log(allRows);
+  }).catch(function (res) {
+      console.log(res);
+  });*/
 
-    //Edit
-    /*store.edit("Sheet2", {"foo": 'bar'}, {"foo": "edited", "another column": 12}).then(function (res) {
-        console.log(res);
-    }).catch(function (err) {
-        console.log(err);
-    });*/
+  //Edit
+  /*store.edit("Sheet2", {"foo": 'bar'}, {"foo": "edited", "another column": 12}).then(function (res) {
+      console.log(res);
+  }).catch(function (err) {
+      console.log(err);
+  });*/
 
-    //Delete
-    /*store.delete("Sheet2", {"foo": 'baz', "another column": "24"}, 2).then(function (res) {
-        console.log(res);
-    }).catch(function (err) {
-        console.log(err);
-    });*/
+  //Delete
+  /*store.delete("Sheet2", {"foo": 'baz', "another column": "24"}, 2).then(function (res) {
+      console.log(res);
+  }).catch(function (err) {
+      console.log(err);
+  });*/
 </script>
 </body>
 </html>

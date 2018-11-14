@@ -563,8 +563,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-const url = 'http://localhost/storage/';
-
 class Store {
   constructor(storageURL) {
     this.url = storageURL.endsWith('/') ? storageURL : storageURL + '/';
@@ -606,10 +604,12 @@ const readSheet = (url, sheetName, {limit, offset, search}) => {
   let URLGetParameters = [
     limit ? `limit=${limit}` : '',
     offset ? `offset=${offset}` : '',
-    search ? `search=${search}` : ''
+    search ? `search=${JSON.stringify(search)}` : ''
   ];
 
   url += `${sheetName}?${URLGetParameters.join('&')}`;
+
+  console.log(url);
 
   return new Promise((resolve, reject) => {
     // Add all rows to the array
@@ -736,7 +736,6 @@ const deleteRows = function (url, sheetName, {searchObj, limit}) {
       reject(err);
     });
   });
-  ;
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = deleteRows;
 

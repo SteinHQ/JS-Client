@@ -578,8 +578,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(5);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__delete__ = __webpack_require__(6);
 
-  var url = 'http://localhost/storage/';
-
   var Store = function () {
     function Store(storageURL) {
       _classCallCheck(this, Store);
@@ -643,9 +641,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string']);
 
-    var URLGetParameters = [limit ? 'limit=' + limit : '', offset ? 'offset=' + offset : '', search ? 'search=' + search : ''];
+    var URLGetParameters = [limit ? 'limit=' + limit : '', offset ? 'offset=' + offset : '', search ? 'search=' + JSON.stringify(search) : ''];
 
     url += sheetName + '?' + URLGetParameters.join('&');
+
+    console.log(url);
 
     return new Promise(function (resolve, reject) {
       // Add all rows to the array
@@ -776,7 +776,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         reject(err);
       });
     });
-    ;
   };
   /* harmony export (immutable) */__webpack_exports__["a"] = deleteRows;
 
