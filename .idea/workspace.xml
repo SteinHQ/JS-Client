@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1fe44395-93e2-40db-8495-3c472adf534b" name="Default" comment="Changed uglify-es to terser, changed URLs to reflect changes in API, improved code quality.">
+    <list default="true" id="1fe44395-93e2-40db-8495-3c472adf534b" name="Default" comment="Added Codacy config, code of conduct">
+      <change afterPath="$PROJECT_DIR$/.codacy.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle_es5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle_es5.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/read.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,33 +33,40 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="babelrc" value="1" />
+          <entry key="babelrc" value="2" />
+          <entry key="gitignore" value="1" />
           <entry key="html" value="1" />
-          <entry key="js" value="21" />
-          <entry key="json" value="1" />
+          <entry key="js" value="22" />
+          <entry key="json" value="2" />
+          <entry key="md" value="1" />
+          <entry key="terser" value="1" />
+          <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="21" />
+          <entry key="JSON" value="4" />
+          <entry key="JavaScript" value="22" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="61" />
           <entry key="js" value="178" />
-          <entry key="json" value="19" />
-          <entry key="txt" value="66" />
+          <entry key="json" value="38" />
+          <entry key="txt" value="153" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="61" />
-          <entry key="JSON" value="19" />
+          <entry key="JSON" value="38" />
           <entry key="JavaScript" value="178" />
-          <entry key="PLAIN_TEXT" value="66" />
+          <entry key="PLAIN_TEXT" value="153" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -77,31 +82,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
+        <entry file="file://$PROJECT_DIR$/.codacy.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/delete.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/read.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+            <state relative-caret-position="46">
+              <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -109,29 +93,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="8" column="217" lean-forward="true" selection-start-line="8" selection-start-column="217" selection-end-line="8" selection-end-column="217" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="75" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="75" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+            <state relative-caret-position="115">
+              <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -154,7 +117,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/demo.js" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/parseRows.js" />
         <option value="$PROJECT_DIR$/node_modules/restful.js/dist/restful.standalone.js" />
         <option value="$PROJECT_DIR$/src/parseApiResponse.js" />
@@ -166,6 +128,9 @@
         <option value="$PROJECT_DIR$/src/delete.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/src/read.js" />
+        <option value="$PROJECT_DIR$/CODE_OF_CONDUCT.md" />
+        <option value="$PROJECT_DIR$/.codacy.yml" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
@@ -192,8 +157,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="800" />
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="y" value="25" />
     <option name="width" value="800" />
     <option name="height" value="875" />
@@ -228,11 +192,6 @@
             <path>
               <item name="Stein-Front-End-Client" type="b2602c69:ProjectViewProjectNode" />
               <item name="Stein-Front-End-Client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Stein-Front-End-Client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stein-Front-End-Client" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Stein-Front-End-Client" type="b2602c69:ProjectViewProjectNode" />
@@ -311,7 +270,7 @@
       <workItem from="1541835600520" duration="598000" />
       <workItem from="1541957892653" duration="169000" />
       <workItem from="1542172783819" duration="2079000" />
-      <workItem from="1542179806320" duration="4689000" />
+      <workItem from="1542179806320" duration="5111000" />
     </task>
     <task id="LOCAL-00001" summary="Changed uglify-es to terser, changed URLs to reflect changes in API, improved code quality.">
       <created>1542185786842</created>
@@ -320,17 +279,31 @@
       <option name="project" value="LOCAL" />
       <updated>1542185786842</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed bug in search">
+      <created>1542187179511</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1542187179511</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Included missed build">
+      <created>1542187253694</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1542187253694</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37263000" />
+    <option name="totallyTimeSpent" value="37685000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1600" height="875" extended-state="6" />
+    <frame x="0" y="25" width="800" height="875" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11294416" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22938144" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24968314" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -343,7 +316,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32388663" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32388663" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32928476" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -359,23 +332,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed uglify-es to terser, changed URLs to reflect changes in API, improved code quality." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed uglify-es to terser, changed URLs to reflect changes in API, improved code quality." />
+    <MESSAGE value="Fixed bug in search" />
+    <MESSAGE value="Included missed build" />
+    <MESSAGE value="Added Codacy config, code of conduct" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Codacy config, code of conduct" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dist/bundled.js" />
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/demo.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/restful.js/dist/restful.standalone.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/restful.js/dist/restful.js" />
-    <entry file="file://$PROJECT_DIR$/.babelrc">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/parseApiResponse.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -405,7 +371,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
+        <state relative-caret-position="92">
           <caret line="3" column="75" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="75" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
@@ -441,8 +407,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        <state relative-caret-position="184">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -453,10 +419,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/terser">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CODE_OF_CONDUCT.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="683">
+            <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.codacy.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="8" column="217" lean-forward="true" selection-start-line="8" selection-start-column="217" selection-end-line="8" selection-end-column="217" />
+        <state relative-caret-position="115">
+          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
         </state>
       </provider>
     </entry>
