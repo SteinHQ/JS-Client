@@ -602,19 +602,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'edit',
       value: function edit(sheetName, _ref2) {
-        var searchObj = _ref2.searchObj,
-            setObj = _ref2.setObj,
+        var search = _ref2.search,
+            set = _ref2.set,
             limit = _ref2.limit;
 
-        return Object(__WEBPACK_IMPORTED_MODULE_2__edit__["a" /* editRows */])(this.url, sheetName, { searchObj: searchObj, setObj: setObj, limit: limit });
+        return Object(__WEBPACK_IMPORTED_MODULE_2__edit__["a" /* editRows */])(this.url, sheetName, { search: search, set: set, limit: limit });
       }
     }, {
       key: 'delete',
       value: function _delete(sheetName, _ref3) {
-        var searchObj = _ref3.searchObj,
+        var search = _ref3.search,
             limit = _ref3.limit;
 
-        return Object(__WEBPACK_IMPORTED_MODULE_3__delete__["a" /* deleteRows */])(this.url, sheetName, { searchObj: searchObj, limit: limit });
+        return Object(__WEBPACK_IMPORTED_MODULE_3__delete__["a" /* deleteRows */])(this.url, sheetName, { search: search, limit: limit });
       }
     }]);
 
@@ -644,8 +644,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var URLGetParameters = [limit ? 'limit=' + limit : '', offset ? 'offset=' + offset : '', search ? 'search=' + JSON.stringify(search) : ''];
 
     url += sheetName + '?' + URLGetParameters.join('&');
-
-    console.log(url);
 
     return new Promise(function (resolve, reject) {
       // Add all rows to the array
@@ -707,10 +705,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         set = _ref5.set,
         limit = _ref5.limit;
 
+    console.log(search, set);
+
     Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [search, 'object'], [set, 'object']);
 
     limit = !isNaN(limit) && limit ? limit : null; // validate limit
-    url += sheetName + '/update';
+    url += '' + sheetName;
 
     // data to post
     var data = {
@@ -719,7 +719,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       limit: limit
     };
     var options = {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -753,8 +753,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [search, 'object']);
 
-    limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
-    url += sheetName + '/delete';
+    limit = !isNaN(limit) && limit ? limit : null; // validate limit
+    url += '' + sheetName;
 
     // data to post
     var data = {
@@ -771,7 +771,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return new Promise(function (resolve, reject) {
       fetch(url, options).then(function (apiResponse) {
-        resolve(apiResponse);
+        resolve(apiResponse.json());
       }).catch(function (err) {
         reject(err);
       });

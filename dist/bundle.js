@@ -611,11 +611,13 @@ const readSheet = (url, sheetName, {limit, offset, search}) => {
 
   return new Promise((resolve, reject) => {
     // Add all rows to the array
-    fetch(url).then((apiResponse) => {
-      resolve(apiResponse.json());
-    }).catch((response) => {
-      reject(response);
-    });
+    fetch(url)
+        .then((apiResponse) => {
+          resolve(apiResponse.json());
+        })
+        .catch((response) => {
+          reject(response);
+        });
   });
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = readSheet;
@@ -645,11 +647,13 @@ const appendRow = function (url, storageId, sheetName, rows) {
   };
 
   return new Promise((resolve, reject) => {
-    fetch(url, options).then((apiResponse) => {
-      resolve(apiResponse.json());
-    }).catch((err) => {
-      reject(err);
-    });
+    fetch(url, options)
+        .then((apiResponse) => {
+          resolve(apiResponse.json());
+        })
+        .catch((err) => {
+          reject(err);
+        });
   });
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = appendRow;
@@ -689,11 +693,13 @@ const editRows = function (url, sheetName, {search, set, limit}) {
   };
 
   return new Promise((resolve, reject) => {
-    fetch(url, options).then((apiResponse) => {
-      resolve(apiResponse.json());
-    }).catch((err) => {
-      reject(err);
-    })
+    fetch(url, options)
+        .then((apiResponse) => {
+          resolve(apiResponse.json());
+        })
+        .catch((err) => {
+          reject(err);
+        });
   });
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = editRows;
@@ -713,7 +719,7 @@ const editRows = function (url, sheetName, {search, set, limit}) {
 const deleteRows = function (url, sheetName, {search, limit}) {
   Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [search, 'object']);
 
-  limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
+  limit = !isNaN(limit) && limit ? limit : null; // validate limit
   url += `${sheetName}`;
 
   // data to post
@@ -730,11 +736,13 @@ const deleteRows = function (url, sheetName, {search, limit}) {
   };
 
   return new Promise((resolve, reject) => {
-    fetch(url, options).then((apiResponse) => {
-      resolve(apiResponse.json());
-    }).catch((err) => {
-      reject(err);
-    });
+    fetch(url, options)
+        .then((apiResponse) => {
+          resolve(apiResponse.json());
+        })
+        .catch((err) => {
+          reject(err);
+        });
   });
 };
 /* harmony export (immutable) */ __webpack_exports__["a"] = deleteRows;
