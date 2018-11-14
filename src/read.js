@@ -1,34 +1,23 @@
-import {isRequired} from "./argIsRequired";
+import {isRequired} from './argIsRequired';
 import 'whatwg-fetch';
 
-export const readSheet = function (url, storageId, sheetName, limit, offset) {
-    isRequired([sheetName, "string"]);
+export const readSheet = (url, sheetName, {limit, offset, search}) => {
+  isRequired([sheetName, 'string']);
 
-    let params = "";
+  let URLGetParameters = [
+    limit ? `limit=${limit}` : '',
+    offset ? `offset=${offset}` : '',
+    search ? `search=${search}` : ''
+  ];
 
-    // add limit & offset params as per cases
-    if (limit) {
-        params += "?limit=" + limit;
-        if (offset) {
-            params += "&offset=" + offset;
-        }
-    } else if (offset) {
-        params += "?offset=" + offset;
-    }
+  url += `${sheetName}?${URLGetParameters.join('&')}`;
 
-    url += `${storageId}/${sheetName}${params}`;
-
-    let allRows = [];
-
-    // The promise to be returned
-    let promise = new Promise((resolve, reject) => {
-        // Add all rows to the array
-        fetch(url).then((apiResponse) => {
-            resolve(apiResponse.json());
-        }).catch((response) => {
-            reject(response);
-        });
+  return new Promise((resolve, reject) => {
+    // Add all rows to the array
+    fetch(url).then((apiResponse) => {
+      resolve(apiResponse.json());
+    }).catch((response) => {
+      reject(response);
     });
-
-    return promise;
+  });
 };

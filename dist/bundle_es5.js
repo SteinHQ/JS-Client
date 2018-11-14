@@ -86,6 +86,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /************************************************************************/
 /******/[
 /* 0 */
+/***/function (module, __webpack_exports__, __webpack_require__) {
+
+  "use strict";
+
+  var isRequired = function isRequired() {
+    for (var argCount = 0; argCount < arguments.length; argCount++) {
+      var currentArg = arguments[argCount][0],
+          currentType = arguments[argCount][1];
+
+      if ((typeof currentArg === 'undefined' ? 'undefined' : _typeof(currentArg)) !== currentType) {
+        throw new Error('Not all required params were supplied');
+      }
+    }
+  };
+  /* harmony export (immutable) */__webpack_exports__["a"] = isRequired;
+
+  /***/
+},
+/* 1 */
 /***/function (module, exports) {
 
   (function (self) {
@@ -548,72 +567,56 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   /***/
 },
-/* 1 */
-/***/function (module, __webpack_exports__, __webpack_require__) {
-
-  "use strict";
-
-  var isRequired = function isRequired() {
-    for (var argCount = 0; argCount < arguments.length; argCount++) {
-      var currentArg = arguments[argCount][0],
-          currentType = arguments[argCount][1];
-
-      if ((typeof currentArg === 'undefined' ? 'undefined' : _typeof(currentArg)) !== currentType) {
-        throw new Error("Not all required params were supplied");
-      }
-    }
-  };
-  /* harmony export (immutable) */__webpack_exports__["a"] = isRequired;
-
-  /***/
-},
 /* 2 */
 /***/function (module, __webpack_exports__, __webpack_require__) {
 
   "use strict";
 
   Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__ = __webpack_require__(0);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__read__ = __webpack_require__(3);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__search__ = __webpack_require__(4);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__append__ = __webpack_require__(5);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_4__edit__ = __webpack_require__(6);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_5__delete__ = __webpack_require__(7);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__read__ = __webpack_require__(3);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1__append__ = __webpack_require__(4);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_2__edit__ = __webpack_require__(5);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_3__delete__ = __webpack_require__(6);
 
   var url = 'http://localhost/storage/';
 
   var Store = function () {
-    function Store(storageId) {
+    function Store(storageURL) {
       _classCallCheck(this, Store);
 
-      this.id = storageId;
+      this.url = storageURL.endsWith('/') ? storageURL : storageURL + '/';
     }
 
     _createClass(Store, [{
       key: 'read',
-      value: function read(sheetName, limit, offset) {
-        return Object(__WEBPACK_IMPORTED_MODULE_1__read__["a" /* readSheet */])(url, this.id, sheetName, limit, offset);
-      }
-    }, {
-      key: 'search',
-      value: function search(sheetName, searchObj, limit, offset) {
-        return Object(__WEBPACK_IMPORTED_MODULE_2__search__["a" /* searchSheet */])(url, this.id, sheetName, searchObj, limit, offset);
+      value: function read(sheetName, _ref) {
+        var limit = _ref.limit,
+            offset = _ref.offset,
+            search = _ref.search;
+
+        return Object(__WEBPACK_IMPORTED_MODULE_0__read__["a" /* readSheet */])(this.url, sheetName, { limit: limit, offset: offset, search: search });
       }
     }, {
       key: 'append',
       value: function append(sheetName, rows) {
-        return Object(__WEBPACK_IMPORTED_MODULE_3__append__["a" /* appendRow */])(url, this.id, sheetName, rows);
+        return Object(__WEBPACK_IMPORTED_MODULE_1__append__["a" /* appendRow */])(this.url, sheetName, rows);
       }
     }, {
       key: 'edit',
-      value: function edit(sheetName, searchObj, setObj, limit) {
-        return Object(__WEBPACK_IMPORTED_MODULE_4__edit__["a" /* editRows */])(url, this.id, sheetName, searchObj, setObj, limit);
+      value: function edit(sheetName, _ref2) {
+        var searchObj = _ref2.searchObj,
+            setObj = _ref2.setObj,
+            limit = _ref2.limit;
+
+        return Object(__WEBPACK_IMPORTED_MODULE_2__edit__["a" /* editRows */])(this.url, sheetName, { searchObj: searchObj, setObj: setObj, limit: limit });
       }
     }, {
       key: 'delete',
-      value: function _delete(sheetName, searchObj, limit) {
-        return Object(__WEBPACK_IMPORTED_MODULE_5__delete__["a" /* deleteRows */])(url, this.id, sheetName, searchObj, limit);
+      value: function _delete(sheetName, _ref3) {
+        var searchObj = _ref3.searchObj,
+            limit = _ref3.limit;
+
+        return Object(__WEBPACK_IMPORTED_MODULE_3__delete__["a" /* deleteRows */])(this.url, sheetName, { searchObj: searchObj, limit: limit });
       }
     }]);
 
@@ -629,31 +632,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   "use strict";
   /* harmony import */
-  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(1);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(0);
+  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(0);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(1);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__);
 
-  var readSheet = function readSheet(url, storageId, sheetName, limit, offset) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"]);
+  var readSheet = function readSheet(url, sheetName, _ref4) {
+    var limit = _ref4.limit,
+        offset = _ref4.offset,
+        search = _ref4.search;
 
-    var params = "";
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string']);
 
-    // add limit & offset params as per cases
-    if (limit) {
-      params += "?limit=" + limit;
-      if (offset) {
-        params += "&offset=" + offset;
-      }
-    } else if (offset) {
-      params += "?offset=" + offset;
-    }
+    var URLGetParameters = [limit ? 'limit=' + limit : '', offset ? 'offset=' + offset : '', search ? 'search=' + search : ''];
 
-    url += storageId + '/' + sheetName + params;
+    url += sheetName + '?' + URLGetParameters.join('&');
 
-    var allRows = [];
-
-    // The promise to be returned
-    var promise = new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
       // Add all rows to the array
       fetch(url).then(function (apiResponse) {
         resolve(apiResponse.json());
@@ -661,8 +655,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         reject(response);
       });
     });
-
-    return promise;
   };
   /* harmony export (immutable) */__webpack_exports__["a"] = readSheet;
 
@@ -673,62 +665,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   "use strict";
   /* harmony import */
-  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(1);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(0);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__);
-
-  var searchSheet = function searchSheet(url, storageId, sheetName, searchObj, limit, offset) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"]);
-
-    // convert all values to string
-    var searchKeys = Object.keys(searchObj);
-    for (var i = 0; i < searchKeys.length; i++) {
-      var currentKey = searchKeys[i];
-      searchObj[currentKey] = searchObj[currentKey].toString();
-    }
-
-    var searchString = JSON.stringify(searchObj),
-        limitString = limit ? "limit=" + limit : "",
-        offsetString = offset ? "offset=" + offset : "";
-
-    var params = "?search=" + searchString;
-    // add limit & offset params as per cases
-    if (limit) {
-      params += "&limit=" + limit;
-    }
-    if (offset) {
-      params += "&offset=" + offset;
-    }
-
-    url += storageId + '/' + sheetName + '/search' + params;
-
-    // The promise to be returned
-    var promise = new Promise(function (resolve, reject) {
-      // Add all rows to the array
-      fetch(url).then(function (apiResponse) {
-        resolve(apiResponse.json());
-      }).catch(function (response) {
-        reject(response);
-      });
-    });
-
-    return promise;
-  };
-  /* harmony export (immutable) */__webpack_exports__["a"] = searchSheet;
-
-  /***/
-},
-/* 5 */
-/***/function (module, __webpack_exports__, __webpack_require__) {
-
-  "use strict";
-  /* harmony import */
-  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(1);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(0);
+  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(0);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(1);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__);
 
   var appendRow = function appendRow(url, storageId, sheetName, rows) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([rows, "object"]);
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([rows, 'object']);
 
     url += storageId + '/' + sheetName + '/append';
     var options = {
@@ -739,41 +681,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       body: JSON.stringify(rows)
     };
 
-    var promise = new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
       fetch(url, options).then(function (apiResponse) {
         resolve(apiResponse.json());
       }).catch(function (err) {
         reject(err);
       });
     });
-
-    return promise;
   };
   /* harmony export (immutable) */__webpack_exports__["a"] = appendRow;
 
   /***/
 },
-/* 6 */
+/* 5 */
 /***/function (module, __webpack_exports__, __webpack_require__) {
 
   "use strict";
   /* harmony import */
-  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(1);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(0);
+  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(0);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(1);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__);
 
-  var editRows = function editRows(url, storageId, sheetName, searchObj, setObj, limit) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"], [setObj, "object"]);
+  var editRows = function editRows(url, sheetName, _ref5) {
+    var searchObj = _ref5.searchObj,
+        setObj = _ref5.setObj,
+        limit = _ref5.limit;
+
+    Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, 'string'], [searchObj, 'object'], [setObj, 'object']);
 
     limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
-
-    url += storageId + '/' + sheetName + '/update';
+    url += sheetName + '/update';
 
     // data to post
     var data = {
-      "condition": searchObj,
-      "set": setObj,
-      "limit": limit
+      'condition': searchObj,
+      'set': setObj,
+      'limit': limit
     };
     var options = {
       method: 'POST',
@@ -782,41 +725,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       body: JSON.stringify(data)
     };
-    // promise to return
-    var promise = new Promise(function (resolve, reject) {
+
+    return new Promise(function (resolve, reject) {
       fetch(url, options).then(function (apiResponse) {
         resolve(apiResponse.json());
       }).catch(function (err) {
         reject(err);
       });
     });
-
-    return promise;
   };
   /* harmony export (immutable) */__webpack_exports__["a"] = editRows;
 
   /***/
 },
-/* 7 */
+/* 6 */
 /***/function (module, __webpack_exports__, __webpack_require__) {
 
   "use strict";
   /* harmony import */
-  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(1);
-  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(0);
+  var __WEBPACK_IMPORTED_MODULE_0__argIsRequired__ = __webpack_require__(0);
+  /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__ = __webpack_require__(1);
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_1_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_whatwg_fetch__);
 
-  var deleteRows = function deleteRows(url, storageId, sheetName, searchObj, limit) {
+  var deleteRows = function deleteRows(url, sheetName, _ref6) {
+    var searchObj = _ref6.searchObj,
+        limit = _ref6.limit;
+
     Object(__WEBPACK_IMPORTED_MODULE_0__argIsRequired__["a" /* isRequired */])([sheetName, "string"], [searchObj, "object"]);
 
     limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
-
-    url += storageId + '/' + sheetName + '/delete';
+    url += sheetName + '/delete';
 
     // data to post
     var data = {
-      "condition": searchObj,
-      "limit": limit
+      'condition': searchObj,
+      'limit': limit
     };
     var options = {
       method: 'DELETE',
@@ -826,16 +769,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       body: JSON.stringify(data)
     };
 
-    // promise to return
-    var promise = new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
       fetch(url, options).then(function (apiResponse) {
         resolve(parseObjectResponse(apiResponse));
       }).catch(function (err) {
         reject(err);
       });
     });
-
-    return promise;
+    ;
   };
   /* harmony export (immutable) */__webpack_exports__["a"] = deleteRows;
 

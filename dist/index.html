@@ -5,13 +5,13 @@
 <body>
 <script src="bundle.js"></script>
 <script>
-    var store = new Store('59e842fc288df70e8464626d');
+    let store = new Store('http://localhost:8080/v1/storages/5be5fa57e10a8b38ac96f582');
 	// Read
-	/*store.read("Sheet2", 3).then(function (allRows) {
+	store.read("Sheet1", 3).then(function (allRows) {
         console.log(allRows);
     }).catch(function (res) {
         console.log(res);
-    });*/
+    });
 	// search
     /*store.search("Sheet2", {"foo": "bar"}, 1).then(function (allRows) {
         console.log(allRows);
