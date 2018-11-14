@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1fe44395-93e2-40db-8495-3c472adf534b" name="Default" comment="Added Codacy config, code of conduct, changed package name">
+    <list default="true" id="1fe44395-93e2-40db-8495-3c472adf534b" name="Default" comment="Improved code quality, fixed bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle-es5.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle-es5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle-es5.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle-es5.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/append.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/append.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/delete.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parseApiResponse.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,17 +56,17 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="129" />
-          <entry key="js" value="253" />
+          <entry key="js" value="267" />
           <entry key="json" value="38" />
-          <entry key="txt" value="175" />
+          <entry key="txt" value="213" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="129" />
           <entry key="JSON" value="38" />
-          <entry key="JavaScript" value="253" />
-          <entry key="PLAIN_TEXT" value="175" />
+          <entry key="JavaScript" value="267" />
+          <entry key="PLAIN_TEXT" value="213" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -92,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+            <state relative-caret-position="268">
+              <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -113,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/read.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+            <state relative-caret-position="460">
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -131,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/delete.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+            <state relative-caret-position="391">
+              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -143,11 +135,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/append.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="460">
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -195,12 +187,12 @@
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/.codacy.yml" />
-        <option value="$PROJECT_DIR$/src/append.js" />
-        <option value="$PROJECT_DIR$/src/read.js" />
-        <option value="$PROJECT_DIR$/src/edit.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
+        <option value="$PROJECT_DIR$/src/edit.js" />
         <option value="$PROJECT_DIR$/src/delete.js" />
+        <option value="$PROJECT_DIR$/src/read.js" />
+        <option value="$PROJECT_DIR$/src/append.js" />
       </list>
     </option>
   </component>
@@ -346,7 +338,7 @@
       <workItem from="1541957892653" duration="169000" />
       <workItem from="1542172783819" duration="2079000" />
       <workItem from="1542179806320" duration="6761000" />
-      <workItem from="1542190426386" duration="1966000" />
+      <workItem from="1542190426386" duration="2203000" />
     </task>
     <task id="LOCAL-00001" summary="Changed uglify-es to terser, changed URLs to reflect changes in API, improved code quality.">
       <created>1542185786842</created>
@@ -376,11 +368,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542187587260</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Improved code quality, fixed bugs">
+      <created>1542192553994</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1542192553994</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41301000" />
+    <option name="totallyTimeSpent" value="41538000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1600" height="875" extended-state="6" />
@@ -419,7 +418,8 @@
     <MESSAGE value="Included missed build" />
     <MESSAGE value="Added Codacy config, code of conduct" />
     <MESSAGE value="Added Codacy config, code of conduct, changed package name" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Codacy config, code of conduct, changed package name" />
+    <MESSAGE value="Improved code quality, fixed bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved code quality, fixed bugs" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dist/bundled.js" />
@@ -490,16 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/argIsRequired.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -514,16 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/append.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -531,10 +511,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/read.js">
+    <entry file="file://$PROJECT_DIR$/src/edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        <state relative-caret-position="268">
+          <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
@@ -543,8 +523,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/delete.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+        <state relative-caret-position="391">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/read.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/append.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>

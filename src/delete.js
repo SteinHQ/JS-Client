@@ -4,7 +4,7 @@ import 'whatwg-fetch';
 export const deleteRows = function (url, sheetName, {search, limit}) {
   isRequired([sheetName, 'string'], [search, 'object']);
 
-  limit = !isNaN(limit) && limit ? limit : undefined; // validate limit
+  limit = !isNaN(limit) && limit ? limit : null; // validate limit
   url += `${sheetName}`;
 
   // data to post
@@ -21,10 +21,12 @@ export const deleteRows = function (url, sheetName, {search, limit}) {
   };
 
   return new Promise((resolve, reject) => {
-    fetch(url, options).then((apiResponse) => {
-      resolve(apiResponse.json());
-    }).catch((err) => {
-      reject(err);
-    });
+    fetch(url, options)
+        .then((apiResponse) => {
+          resolve(apiResponse.json());
+        })
+        .catch((err) => {
+          reject(err);
+        });
   });
 };

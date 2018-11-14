@@ -24,10 +24,12 @@ export const editRows = function (url, sheetName, {search, set, limit}) {
   };
 
   return new Promise((resolve, reject) => {
-    fetch(url, options).then((apiResponse) => {
-      resolve(apiResponse.json());
-    }).catch((err) => {
-      reject(err);
-    })
+    fetch(url, options)
+        .then((apiResponse) => {
+          resolve(apiResponse.json());
+        })
+        .catch((err) => {
+          reject(err);
+        });
   });
 };

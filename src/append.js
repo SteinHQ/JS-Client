@@ -14,10 +14,12 @@ export const appendRow = function (url, storageId, sheetName, rows) {
   };
 
   return new Promise((resolve, reject) => {
-    fetch(url, options).then((apiResponse) => {
-      resolve(apiResponse.json());
-    }).catch((err) => {
-      reject(err);
-    });
+    fetch(url, options)
+        .then((apiResponse) => {
+          resolve(apiResponse.json());
+        })
+        .catch((err) => {
+          reject(err);
+        });
   });
 };

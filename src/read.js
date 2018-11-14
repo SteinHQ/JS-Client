@@ -14,10 +14,12 @@ export const readSheet = (url, sheetName, {limit, offset, search}) => {
 
   return new Promise((resolve, reject) => {
     // Add all rows to the array
-    fetch(url).then((apiResponse) => {
-      resolve(apiResponse.json());
-    }).catch((response) => {
-      reject(response);
-    });
+    fetch(url)
+        .then((apiResponse) => {
+          resolve(apiResponse.json());
+        })
+        .catch((response) => {
+          reject(response);
+        });
   });
 };
