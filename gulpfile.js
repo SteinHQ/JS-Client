@@ -9,13 +9,4 @@ gulp.task("default", () =>
     .src("src/index.js")
     .pipe(webpack())
     .pipe(rename("bundle.min.js"))
-    .pipe(gulp.dest("dist"))
-    .pipe(
-      babel({
-        presets: ["@babel/preset-env"]
-      })
-    )
-    .pipe(terser())
-    .pipe(rename("bundle-es5.min.js"))
-    .pipe(gulp.dest("dist"))
 );

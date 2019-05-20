@@ -1,10 +1,10 @@
-import { isRequired } from "./argIsRequired";
-import "whatwg-fetch";
+const isRequired = require("./argIsRequired"),
+  fetch = require("isomorphic-unfetch");
 
-export const appendRow = function(url, storageId, sheetName, rows) {
+module.exports = (url, sheetName, rows) => {
   isRequired([rows, "object"]);
 
-  url += `${storageId}/${sheetName}/append`;
+  url += `${sheetName}`;
   const options = {
     method: "POST",
     headers: {

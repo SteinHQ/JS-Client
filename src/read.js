@@ -1,7 +1,7 @@
-import { isRequired } from "./argIsRequired";
-import "whatwg-fetch";
+const isRequired = require("./argIsRequired"),
+  fetch = require("isomorphic-unfetch");
 
-export const readSheet = (url, sheetName, { limit, offset, search }) => {
+module.exports = (url, sheetName, { limit, offset, search } = {}) => {
   isRequired([sheetName, "string"]);
 
   let URLGetParameters = [
@@ -10,7 +10,7 @@ export const readSheet = (url, sheetName, { limit, offset, search }) => {
     search ? `search=${JSON.stringify(search)}` : ""
   ];
 
-  url += `${sheetName}?${URLGetParameters.join("&")}`;
+  url += `${sheetName}?${URLGetParameters.filter(param => !!param).join("&")}`;
 
   return new Promise((resolve, reject) => {
     // Add all rows to the array

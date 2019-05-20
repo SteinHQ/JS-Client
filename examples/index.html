@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Test</title>
+  </head>
+  <body>
+    <script src="../dist/bundle.js"></script>
+    <script>
+      let store = new SteinStore("https://api.steinhq.com/v1/storages/alpha");
+      // Read
+      /*store
+        .read("Sheet1")
+        .then(function(allRows) {
+          console.log(allRows);
+        })
+        .catch(function(res) {
+          console.log(res);
+        });*/
+      // Append
+      /*store
+        .append("Sheet2", [{ foo: "badadawdr", "another column": 1 }])
+        .then(function(allRows) {
+          console.log(allRows);
+        })
+        .catch(function(res) {
+          console.log(res);
+        });*/
+
+      //Edit
+      /*store
+        .edit("Sheet1", {
+          search: { author: "Shiven Sinha" },
+          set: { author: "Shiven" }
+        })
+        .then(function(res) {
+          console.log(res);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });*/
+
+      //Delete
+      /*store
+        .delete("Sheet1", {
+          search: { name: "Shiven" },
+          limit: 1
+        })
+        .then(function(res) {
+          console.log(res);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });*/
+    </script>
+  </body>
+</html>

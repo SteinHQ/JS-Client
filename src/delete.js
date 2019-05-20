@@ -1,7 +1,7 @@
-import { isRequired } from "./argIsRequired";
-import "whatwg-fetch";
+const isRequired = require("./argIsRequired"),
+  fetch = require("isomorphic-unfetch");
 
-export const deleteRows = function(url, sheetName, { search, limit }) {
+module.exports = (url, sheetName, { search, limit }) => {
   isRequired([sheetName, "string"], [search, "object"]);
 
   limit = !isNaN(limit) && limit ? limit : null; // validate limit
