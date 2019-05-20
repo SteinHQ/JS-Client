@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1fe44395-93e2-40db-8495-3c472adf534b" name="Default" comment="Prettied everything">
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+    <list default="true" id="1fe44395-93e2-40db-8495-3c472adf534b" name="Default" comment="Updated to fix bugs, made universal, added license">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle-es5.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/append.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/append.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/argIsRequired.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/argIsRequired.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/delete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,7 +33,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="414">
               <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
             </state>
           </provider>
@@ -56,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+            <state relative-caret-position="69">
+              <caret line="3" column="74" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -86,6 +72,7 @@
       <find>() =&gt; {</find>
       <find>read</find>
       <find>window</find>
+      <find>license</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -132,9 +119,9 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="484" />
-    <option name="y" value="36" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="404" />
+    <option name="y" value="6" />
     <option name="width" value="800" />
     <option name="height" value="788" />
   </component>
@@ -273,7 +260,8 @@
       <workItem from="1542190426386" duration="2246000" />
       <workItem from="1554569498461" duration="6117000" />
       <workItem from="1554583303403" duration="171000" />
-      <workItem from="1558338992583" duration="12265000" />
+      <workItem from="1558338992583" duration="12333000" />
+      <workItem from="1558360530390" duration="997000" />
     </task>
     <task id="LOCAL-00001" summary="Changed uglify-es to terser, changed URLs to reflect changes in API, improved code quality.">
       <created>1542185786842</created>
@@ -338,11 +326,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554583456679</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated to fix bugs, made universal, added license">
+      <created>1558353344877</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1558353344877</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60134000" />
+    <option name="totallyTimeSpent" value="61199000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -354,14 +349,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="404" y="6" width="800" height="788" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13616072" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24015749" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24968314" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32626426" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -374,6 +368,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32820514" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32928476" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.37846655" />
+      <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -415,7 +410,8 @@
     <MESSAGE value="Updated build script" />
     <MESSAGE value="Updated demo HTML, versioned build files" />
     <MESSAGE value="Prettied everything" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prettied everything" />
+    <MESSAGE value="Updated to fix bugs, made universal, added license" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to fix bugs, made universal, added license" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dist/bundled.js" />
@@ -440,13 +436,7 @@
     <entry file="file://$PROJECT_DIR$/dist/index.js" />
     <entry file="file://$PROJECT_DIR$/dist/f5ee8acf6e1f9e4e5937.js" />
     <entry file="file://$PROJECT_DIR$/dist/bundle-es5.js/f5ee8acf6e1f9e4e5937.js" />
-    <entry file="file://$PROJECT_DIR$/dist/bundle-es5.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret column="1629" selection-start-column="1629" selection-end-column="1629" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/bundle-es5.min.js" />
     <entry file="file://$PROJECT_DIR$/.codacy.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -468,13 +458,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/bundle.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret column="2618" selection-start-column="2618" selection-end-column="2618" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/bundle.min.js" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -517,38 +501,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/read.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/example.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/example.js" />
     <entry file="file://$PROJECT_DIR$/examples/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -559,10 +516,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/read.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+        <state relative-caret-position="69">
+          <caret line="3" column="74" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="74" />
         </state>
       </provider>
     </entry>
