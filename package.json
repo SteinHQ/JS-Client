@@ -39,6 +39,7 @@
     "uglifyify": "^5.0.1"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^3.0.0"
+    "isomorphic-unfetch": "^3.0.0",
+    "universal-base64": "^2.0.1"
   }
 }

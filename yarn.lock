@@ -2336,6 +2336,11 @@ unicode-property-aliases-ecmascript@^1.0.4:
   resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.0.5.tgz#a9cc6cc7ce63a0a3023fc99e341b94431d405a57"
   integrity sha512-L5RAqCfXqAwR3RriF8pM0lU0w4Ryf/GgzONwi6KnL1taJQa7x1TCxdJnILX59WIGOwR57IVxn7Nej0fz1Ny6fw==
 
+universal-base64@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/universal-base64/-/universal-base64-2.0.1.tgz#eef2dc5b3c743011ad079e34455db823656dcb82"
+  integrity sha512-rE6D+24xeDkiDs7lDBq7JF7KQjLeISiTxfdLMbgaiz6EdxQ7tCDgWoUp6VcBxBB8TN53ql+uvlv/Z9cWYo0DrQ==
+
 url@~0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
