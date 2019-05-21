@@ -44,7 +44,7 @@ You can now interact with the API using the methods on the store.
 
 ## Read & Search Data
 
-#### store.read(sheetName, {limit, offset, authentication, search})
+#### `store.read(sheetName, {limit, offset, authentication, search})`
 
 ### Valid Options
 
@@ -74,7 +74,7 @@ store
 
 ## Add Rows
 
-#### store.append(sheetName, rows, {authentication})
+#### `store.append(sheetName, rows, {authentication})`
 
 ### Valid Options
 
@@ -108,7 +108,7 @@ store
 
 ## Update Rows
 
-#### store.edit(sheetName, {search, set, limit, authentication})
+#### `store.edit(sheetName, {search, set, limit, authentication})`
 
 ### Valid Options
 
@@ -140,7 +140,7 @@ store
 
 ## Delete Rows
 
-#### store.delete(sheetName, {search, limit, authentication})
+#### `store.delete(sheetName, {search, limit, authentication})`
 
 ### Valid Options
 
