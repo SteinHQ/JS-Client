@@ -174,4 +174,4 @@ Find additional documentation and guides on [docs.steinhq.com](https://docs.stei
 
 ## License
 
-Stein Expedite is [MIT licensed](./LICENSE).
+The Stein JavaScript client is [MIT licensed](./LICENSE).
