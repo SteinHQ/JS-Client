@@ -1,4 +1,5 @@
-const isRequired = require("./argIsRequired"),
+const isRequired = require("./lib/argIsRequired"),
+  processFetchResponse = require("./lib/processFetchResponse"),
   base64Encode = require("universal-base64").encode,
   fetch = require("isomorphic-unfetch");
 
@@ -30,13 +31,10 @@ module.exports = (
     // Add all rows to the array
     fetch(url, options)
       .then(apiResponse => {
-        if (!apiResponse.ok) {
-          return apiResponse.json().then(error => {
-            throw new Error(error.error);
-          });
-        }
-
-        resolve(apiResponse.json());
+        return processFetchResponse(apiResponse);
+      })
+      .then(data => {
+        resolve(data);
       })
       .catch(response => {
         reject(response);
