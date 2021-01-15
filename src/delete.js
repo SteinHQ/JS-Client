@@ -1,4 +1,5 @@
-const isRequired = require("./argIsRequired"),
+const isRequired = require("./lib/argIsRequired"),
+  processFetchResponse = require("./lib/processFetchResponse"),
   base64Encode = require("universal-base64").encode,
   fetch = require("isomorphic-unfetch");
 
@@ -31,7 +32,10 @@ module.exports = (url, sheetName, { search, limit, authentication }) => {
   return new Promise((resolve, reject) => {
     fetch(url, options)
       .then(apiResponse => {
-        resolve(apiResponse.json());
+        return processFetchResponse(apiResponse);
+      })
+      .then(data => {
+        resolve(data);
       })
       .catch(err => {
         reject(err);
