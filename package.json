@@ -29,17 +29,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.3",
-    "babel-preset-minify": "^0.5.0",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "babel-preset-minify": "^0.5.1",
     "babelify": "^10.0.0",
-    "browserify": "^16.2.3",
+    "browserify": "^17.0.0",
     "deamdify": "^0.3.0",
     "deglobalify": "^0.2.0",
-    "uglifyify": "^5.0.1"
+    "uglifyify": "^5.0.2"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^3.0.0",
-    "universal-base64": "^2.0.1"
+    "isomorphic-unfetch": "^3.1.0",
+    "universal-base64": "^2.1.0"
   }
 }
